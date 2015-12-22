@@ -1,8 +1,9 @@
 "use strict";
 
-module.exports = function(defaultJs) {
-  defaultJs.push({
+module.exports = function(defaults) {
+  defaults.push({
     name: 'angular',
+    file: 'app/src/index.js',
     elements: [],
     compile: function compileAngular() {
       var res = [];
@@ -16,6 +17,7 @@ module.exports = function(defaultJs) {
     }
   }, {
     name: 'modules',
+    file: 'app/src/index.js',
     elements: [],
     compile: function compileModules() {
       return "  var module = angular.module('" + alquimia.config.appName.camelCase + "', ['" +
@@ -23,11 +25,12 @@ module.exports = function(defaultJs) {
     }
   }, {
     name: 'configs',
+    file: 'app/src/index.js',
     elements: [],
     compile: function compileConfigs() {
       return '  ' + this.elements.join('\n  ');
     }
   });
 
-  return defaultJs;
+  return defaults;
 };
