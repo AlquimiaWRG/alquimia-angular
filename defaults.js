@@ -1,9 +1,12 @@
 "use strict";
 
 module.exports = function(defaults) {
+  var appDir = alquimia.getPath('appDir');
+  var scriptsDir = alquimia.getPath('scriptsDir');
+
   defaults.push({
     name: 'angular',
-    file: 'app/src/index.js',
+    file: appDir + '/' + scriptsDir + '/index.js',
     elements: [],
     compile: function compileAngular() {
       var res = [];
@@ -17,7 +20,7 @@ module.exports = function(defaults) {
     }
   }, {
     name: 'modules',
-    file: 'app/src/index.js',
+    file: appDir + '/' + scriptsDir + '/index.js',
     elements: [],
     compile: function compileModules() {
       return "  var module = angular.module('" + alquimia.config.appName.camelCase + "', ['" +
@@ -25,7 +28,7 @@ module.exports = function(defaults) {
     }
   }, {
     name: 'configs',
-    file: 'app/src/index.js',
+    file: appDir + '/' + scriptsDir + '/index.js',
     elements: [],
     compile: function compileConfigs() {
       return '  ' + this.elements.join('\n  ');
